@@ -30,6 +30,7 @@ import { sendDirect } from "./lib/SendDirect";
 import { sendMessage } from "./lib/SendMessage";
 import { sendNotification } from "./lib/SendNotification";
 import { DirectContext } from "./persistence/DirectContext";
+import { addReactions, removeReactions } from "./lib/SendReactions";
 
 export class OpenAiChatApp extends App implements IPostMessageSent {
     constructor(info: IAppInfo, logger: ILogger, accessors: IAppAccessors) {
@@ -151,6 +152,14 @@ export class OpenAiChatApp extends App implements IPostMessageSent {
                     );
                 }
             }
+
+            const { value: ENABLE_REACTION } = await read
+            .getEnvironmentReader()
+            .getSettings()
+            .getById(AppSetting.ENABLE_REACTION);
+
+            if (ENABLE_REACTION) await addReactions(modify, message, read, [':thinking_face:']);
+
             const result = await OpenAiCompletionRequest(
                 this,
                 http,
@@ -158,6 +167,9 @@ export class OpenAiChatApp extends App implements IPostMessageSent {
                 context,
                 sender
             );
+
+            if (ENABLE_REACTION) await removeReactions(modify, message, read);
+
             if (result.success) {
                 var markdown_message =
                     result.content.choices[0].message.content.replace(
@@ -171,6 +183,7 @@ export class OpenAiChatApp extends App implements IPostMessageSent {
                     markdown_message,
                     message.threadId || message.id
                 );
+                if (ENABLE_REACTION) await addReactions(modify, message, read, [':checkered_flag:']);
             } else {
                 sendNotification(
                     modify,
@@ -179,6 +192,7 @@ export class OpenAiChatApp extends App implements IPostMessageSent {
                     `**Error!** Could not Request Completion:\n\n` +
                         result.content.error.message
                 );
+                if (ENABLE_REACTION) await addReactions(modify, message, read, [':interrobang:']);
             }
         }
 

@@ -12,6 +12,7 @@ export enum AppSetting {
     OpenAI_CHAT_DEFAULT_SYSTEM_INSTRUCTION = "openai_chat_default_system_instruction",
     OpenAI_CHAT_MAX_TOKENS = "openai_chat_max_tokens",
     OpenAI_CHAT_TEMPERATURE = "openai_chat_temperature",
+    ENABLE_REACTION = "openai_chat_enable_reaction"
 }
 
 export const settings: Array<ISetting> = [
@@ -89,5 +90,17 @@ export const settings: Array<ISetting> = [
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_HELP",
         required: false,
+    },
+    {
+        id: AppSetting.ENABLE_REACTION,
+        public: true,
+        type: SettingType.BOOLEAN,
+        packageValue: false,
+        value: false,
+        hidden: false,
+        i18nLabel: AppSetting.NAMESPACE + "_ENABLE_REACTION",
+        i18nDescription: AppSetting.NAMESPACE + "_ENABLE_REACTION_description",
+        required: false,
+        section: AppSetting.NAMESPACE + "_SETTING_SECTION_BOT_CONFIG"
     },
 ];
