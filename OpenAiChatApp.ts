@@ -22,7 +22,7 @@ import {
 import { OpenAIChatCommand } from "./commands/OpenAIChatCommand";
 import { OpenAIChatHelpCommand } from "./commands/OpenAIChatHelpCommand";
 import { buttons } from "./config/Buttons";
-import { settings } from "./config/Settings";
+import { AppSetting, settings } from "./config/Settings";
 import { ActionButtonHandler } from "./handlers/ActionButtonHandler";
 import { ViewSubmitHandler } from "./handlers/ViewSubmit";
 import { OpenAiCompletionRequest } from "./lib/RequestOpenAiChat";
@@ -101,14 +101,43 @@ export class OpenAiChatApp extends App implements IPostMessageSent {
         persistence: IPersistence,
         modify: IModify
     ): Promise<void> {
-        const { text, editedAt, room, sender } = message;
+        const { id: messageId, text, editedAt, room, sender } = message;
         // we only want direct with the app username
         var bot_user = await read.getUserReader().getAppUser();
+        const { username: botUsername, id: botId } = bot_user || {};
+
+        if (!messageId || !botId) return;
+
+        const msgRead = await read.getMessageReader().getById(messageId);
+
+        if (!msgRead) return;
+
+        const { value: ENABLE_MENTION } = await read
+        .getEnvironmentReader()
+        .getSettings()
+        .getById(AppSetting.ENABLE_MENTION);
+
+        const mentionedUsers = msgRead['_unmappedProperties_']?.mentions || [];
+
+        const botMentioned = Boolean(mentionedUsers.find(user => user.username === botUsername) && ENABLE_MENTION);
+
+        const isDirectMessageBot = Boolean(room.type === RoomType.DIRECT_MESSAGE && room.userIds && room.userIds.includes(botId));
+
+        const isChannel = room.type === RoomType.CHANNEL;
+        const isPrivateGroup = room.type === RoomType.PRIVATE_GROUP;
+
+        const isMentionedInAChannel = botMentioned && isChannel;
+        const isMentionedInAPrivateRoom = botMentioned && isPrivateGroup;
+
         var context: any;
         if (
             bot_user &&
-            message.room.type == RoomType.DIRECT_MESSAGE && // direct messages
-            message.room.userIds?.includes(bot_user?.id) // that has bot_user id
+            (
+                isDirectMessageBot
+                || isMentionedInAChannel
+                || isMentionedInAPrivateRoom
+            )
+            // that has bot_user id
             // bot_user?.id !== sender.id // and was not sent by the bot itself
         ) {
             // this the bot answer, get the actual context and store it

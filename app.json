@@ -26,6 +26,9 @@
             "name": "room.write"
         },
         {
+            "name": "message.read"
+        },
+        {
             "name": "message.write"
         },
         {

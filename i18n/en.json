@@ -11,5 +11,7 @@
     "OpenAIChat_TEMPERATURE_LABEL": "Temperature (Defaults to 1)",
     "OpenAIChat_DEFAULT_SYSTEM_INSTRUCTION_LABEL": "System Instruction (how the ChatGPT should behave)",
     "OpenAIChat_ENABLE_REACTION": "Enable Reactions",
-    "OpenAIChat_ENABLE_REACTION_description": "Add reaction to message when bot is working on the response"
+    "OpenAIChat_ENABLE_REACTION_description": "Add reaction to message when bot is working on the response",
+    "OpenAIChat_ENABLE_MENTION": "Enable Mention Responses",
+    "OpenAIChat_ENABLE_MENTION_description": "Allow the bot to respond when mentioned in a message thread"
 }
