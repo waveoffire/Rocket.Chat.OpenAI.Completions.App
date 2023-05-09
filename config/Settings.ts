@@ -25,6 +25,7 @@ export const settings: Array<ISetting> = [
         packageValue: "",
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_API_KEY_LABEL",
+        i18nDescription: AppSetting.NAMESPACE + "_API_KEY_LABEL_description",
         required: true,
     },
     {
@@ -34,6 +35,7 @@ export const settings: Array<ISetting> = [
         packageValue: "gpt-3.5-turbo",
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_CHAT_MODEL_LABEL",
+        i18nDescription: AppSetting.NAMESPACE + "_CHAT_MODEL_LABEL_description",
         required: true,
         values: [
             {
@@ -54,6 +56,7 @@ export const settings: Array<ISetting> = [
         value: "Your are a helpful assistant.",
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_DEFAULT_SYSTEM_INSTRUCTION_LABEL",
+        i18nDescription: AppSetting.NAMESPACE + "_DEFAULT_SYSTEM_INSTRUCTION_LABEL_description",
         required: false,
     },
     {
@@ -63,6 +66,7 @@ export const settings: Array<ISetting> = [
         packageValue: null,
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_ORG_LABEL",
+        i18nDescription: AppSetting.NAMESPACE + "_ORG_LABEL_description",
         required: false,
     },
     {
@@ -72,6 +76,7 @@ export const settings: Array<ISetting> = [
         packageValue: null,
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_MAX_TOKENS_LABEL",
+        i18nDescription: AppSetting.NAMESPACE + "_MAX_TOKENS_LABEL_description",
         required: false,
     },
     {
@@ -81,16 +86,20 @@ export const settings: Array<ISetting> = [
         packageValue: null,
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_TEMPERATURE_LABEL",
+        i18nDescription: AppSetting.NAMESPACE + "_TEMPERATURE_LABEL_description",
         required: false,
     },
     {
         id: AppSetting.OpenAI_HELP,
         public: true,
         type: SettingType.STRING,
+        multiline: true,
         packageValue: null,
         value: "Type `/chatgpt` and hit enter to start",
+        i18nPlaceholder: "Type `/chatgpt` and hit enter to start",
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_HELP",
+        i18nDescription: AppSetting.NAMESPACE + "_HELP_description",
         required: false,
     },
     {
