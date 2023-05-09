@@ -13,5 +13,7 @@
     "OpenAIChat_ENABLE_REACTION": "Enable Reactions",
     "OpenAIChat_ENABLE_REACTION_description": "Add reaction to message when bot is working on the response",
     "OpenAIChat_ENABLE_MENTION": "Enable Mention Responses",
-    "OpenAIChat_ENABLE_MENTION_description": "Allow the bot to respond when mentioned in a message thread"
+    "OpenAIChat_ENABLE_MENTION_description": "Allow the bot to respond when mentioned in a message thread",
+    "OpenAIChat_ENABLE_IN_PRIVATE_ROOM": "Enable in private room",
+    "OpenAIChat_ENABLE_IN_PRIVATE_ROOM_description": "Allow the bot to respond when mentioned in a private room"
 }

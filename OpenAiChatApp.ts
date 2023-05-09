@@ -129,13 +129,18 @@ export class OpenAiChatApp extends App implements IPostMessageSent {
         const isMentionedInAChannel = botMentioned && isChannel;
         const isMentionedInAPrivateRoom = botMentioned && isPrivateGroup;
 
+        const { value: ENABLE_IN_PRIVATE_ROOM } = await read
+        .getEnvironmentReader()
+        .getSettings()
+        .getById(AppSetting.ENABLE_IN_PRIVATE_ROOM);
+
         var context: any;
         if (
             bot_user &&
             (
                 isDirectMessageBot
                 || isMentionedInAChannel
-                || isMentionedInAPrivateRoom
+                || (isMentionedInAPrivateRoom && ENABLE_IN_PRIVATE_ROOM)
             )
             // that has bot_user id
             // bot_user?.id !== sender.id // and was not sent by the bot itself
