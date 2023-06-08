@@ -1,6 +1,6 @@
  {
     "recommendations": [
-        "EditorConfig.editorconfig",
+        "editorconfig.editorconfig",
         "eamodio.gitlens",
         "eg2.vscode-npm-script",
         "wayou.vscode-todo-highlight",
