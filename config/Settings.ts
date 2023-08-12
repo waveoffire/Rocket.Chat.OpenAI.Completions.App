@@ -57,6 +57,18 @@ export const settings: Array<ISetting> = [
             {
                 key: "gpt-3.5-turbo-16k-0613",
                 i18nLabel: "gpt-3.5-turbo-16k-0613"
+            },
+            {
+                key: "gpt-4",
+                i18nLabel: "gpt-4"
+            },
+            {
+                key: "gpt-4-0314",
+                i18nLabel: "gpt-4-0314"
+            },
+            {
+                key: "gpt-4-0613",
+                i18nLabel: "gpt-4-0613"
             }
         ]
     },
