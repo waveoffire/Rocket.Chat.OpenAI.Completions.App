@@ -30,6 +30,10 @@ export async function OpenAiCompletionRequest(
         .getEnvironmentReader()
         .getSettings()
         .getById(AppSetting.OpenAI_CHAT_TEMPERATURE);
+    const { value: OpenAI_MODEL } = await read
+        .getEnvironmentReader()
+        .getSettings()
+        .getById(AppSetting.OpenAI_MODEL);
     // request completion and return
     var headers = {
         Authorization: "Bearer " + API_KEY,
@@ -40,12 +44,12 @@ export async function OpenAiCompletionRequest(
     }
     var temperature = parseFloat(OPEN_AI_CHAT_TEMPERATURE)
     // if temperature is not a float or integer
-    if(!temperature){
+    if (!temperature) {
         temperature = 1
     }
     const payload = {
         user: sender.id,
-        model: "gpt-3.5-turbo",
+        model: OpenAI_MODEL,
         messages: prompt,
         max_tokens: OPEN_AI_CHAT_MAX_TOKENS,
         temperature: temperature,

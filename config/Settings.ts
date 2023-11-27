@@ -10,6 +10,8 @@ export enum AppSetting {
     OpenAI_CHAT_DEFAULT_SYSTEM_INSTRUCTION = "openai_chat_default_system_instruction",
     OpenAI_CHAT_MAX_TOKENS = "openai_chat_max_tokens",
     OpenAI_CHAT_TEMPERATURE = "openai_chat_temperature",
+    OpenAI_MODEL = "openai_model",
+
 }
 
 export const settings: Array<ISetting> = [
@@ -30,6 +32,16 @@ export const settings: Array<ISetting> = [
         value: "Your are a helpful assistant.",
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_DEFAULT_SYSTEM_INSTRUCTION_LABEL",
+        required: false,
+    },
+    {
+        id: AppSetting.OpenAI_MODEL,
+        public: true,
+        type: SettingType.STRING,
+        packageValue: "gpt-3.5-turbo",
+        value: "gpt-3.5-turbo",
+        hidden: false,
+        i18nLabel: AppSetting.NAMESPACE + "_Model",
         required: false,
     },
     {
