@@ -13,13 +13,6 @@
     "OpenAIChat_HELP": "Response for /chatgpt-help command",
     "OpenAIChat_HELP_description": "Customizable message used for fetching documentation and/or help pages using command `/chatgpt-help`.",
     "OpenAIChat_TEMPERATURE_LABEL": "Temperature (Defaults to 1)",
-    "OpenAIChat_TEMPERATURE_LABEL_description": "The temperature setting controls how creative the OpenAI chat model can be by adjusting the randomness of its responses. The value of temperature ranges from 0 to 1, with a default of 1.",
     "OpenAIChat_DEFAULT_SYSTEM_INSTRUCTION_LABEL": "System Instruction (how the ChatGPT should behave)",
-    "OpenAIChat_DEFAULT_SYSTEM_INSTRUCTION_LABEL_description": "This field is used to give specific instructions to the AI language model about how it should behave when generating responses. You can use it to set certain guidelines or rules for the conversation such as topics to avoid, preferred formatting or tone, or requests for specific types of responses.",
-    "OpenAIChat_ENABLE_REACTION": "Enable Reactions",
-    "OpenAIChat_ENABLE_REACTION_description": "Add reaction to message when bot is working on the response",
-    "OpenAIChat_ENABLE_MENTION": "Enable Mention Responses",
-    "OpenAIChat_ENABLE_MENTION_description": "Allow the bot to respond when mentioned in a message thread",
-    "OpenAIChat_ENABLE_IN_PRIVATE_ROOM": "Enable in private room",
-    "OpenAIChat_ENABLE_IN_PRIVATE_ROOM_description": "Allow the bot to respond when mentioned in a private room"
+    "OpenAIChat_Model": "Model of chatgpt to use (https://platform.openai.com/docs/models)"
 }

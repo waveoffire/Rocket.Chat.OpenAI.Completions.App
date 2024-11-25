@@ -12,9 +12,8 @@ export enum AppSetting {
     OpenAI_CHAT_DEFAULT_SYSTEM_INSTRUCTION = "openai_chat_default_system_instruction",
     OpenAI_CHAT_MAX_TOKENS = "openai_chat_max_tokens",
     OpenAI_CHAT_TEMPERATURE = "openai_chat_temperature",
-    ENABLE_REACTION = "openai_chat_enable_reaction",
-    ENABLE_MENTION = "openai_chat_enable_mention",
-    ENABLE_IN_PRIVATE_ROOM = "openai_chat_enable_in_private_room"
+    OpenAI_MODEL = "openai_model",
+
 }
 
 export const settings: Array<ISetting> = [
@@ -73,6 +72,16 @@ export const settings: Array<ISetting> = [
         hidden: false,
         i18nLabel: AppSetting.NAMESPACE + "_DEFAULT_SYSTEM_INSTRUCTION_LABEL",
         i18nDescription: AppSetting.NAMESPACE + "_DEFAULT_SYSTEM_INSTRUCTION_LABEL_description",
+        required: false,
+    },
+    {
+        id: AppSetting.OpenAI_MODEL,
+        public: true,
+        type: SettingType.STRING,
+        packageValue: "gpt-3.5-turbo",
+        value: "gpt-3.5-turbo",
+        hidden: false,
+        i18nLabel: AppSetting.NAMESPACE + "_Model",
         required: false,
     },
     {
